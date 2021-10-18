@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hand Cricket</title>
+  <link rel="stylesheet" href="hand_cricket.css">
+  <script src="https://kit.fontawesome.com/afc6005920.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Mogra&family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Kaushan+Script&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="Det_add_game_card">
+    <div class="Details_and_addplayer_and_handcricket">
+      <div class="Details_and_addplayer">
+        <!-- Page-1 :- Match setup -->
+        <div class="page-1">
+          <p>Set Up Your Match </p>
+          <form>
+            <div class="form-container">
+              <div class="Match-Details">
+                <label for="teamname">Enter Your Team Name</label><br>
+                <input type="text" name="teamname" id="teamname" placeholder="Enter Teamname" required>
+              </div>
+              <div class="Match-Details">
+                <label for="overs">Choose No.of Overs You Want</label><br>
+                <select id="overs">
+                  <option value=1>1 Over</option>
+                  <option value=2>2 Overs</option>
+                  <option value=3>3 Overs</option>
+                  <option value=4>4 Overs</option>
+                  <option value=5>5 Overs</option>
+                  <option value=10>10 Overs</option>
+                  <option value=20>20 Overs</option>
+                </select>
+              </div>
+              <div class="Match-Details">
+                <label for="players_total">Choose No.of Players In Your Team</label><br>
+                <select id="players_total">
+                  <option value=2>2 Players</option>
+                  <option value=4>4 Players</option>
+                  <option value=6>6 Players</option>
+                  <option value=8>8 Players</option>
+                  <option value=10>10 Players</option>
+                  <option value=11>11 Players</option>
+                </select>
+              </div>
+              <div class="Match-Details">
+                <label for="toss">Choose to Bat or Bowl First</label><br>
+                <select id="toss">
+                  <option value="bat">Bat First</option>
+                  <option value="bowl">Bowl First</option>
+                </select>
+              </div>
+              <button type="submit" id="match_details_submit">Continue</button>
+            </div>
+          </form>
+        </div>
+        <!-- Page-2 (Add players) -->
+        <div class="page_2">
+          <div class="container_add_palyer">
+            <h1>Make your Team</h1>
+            <div class="input-field">
+              <input type="text" name="palyer-name" placeholder="Enter player name" maxlength="12">
+              <button type="button"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul class="playerlist">
+            </ul>
+            <div class="indicator-add-player">
+              <span class="add_player_msg">Add <span class="remplayer"></span> more players in your team</span>
+            </div>
+            <div class="add_player_submit_button_div">
+
+            </div>
+          </div>
+        </div>
+        <!-- end of combination of page 1 and page 2 -->
+      </div>
+      <div class="page_3">
+        <div class="hand_cricket_div">
+          <!-- user score-board -->
+          <div class="top_container_page_3">
+           <div class="top_scoreboard">
+             <div class="indicator_scoreboard">
+               <span id="user-job">1st</span><span> Innings</span>
+             </div>
+             <div class="score-details-user">
+               <p>RUNS : <span class="runs-user">0</span>/<span class="user-wickets">0</span> </p>
+               <p>OVERS : <span class="comp-over-user">0</span>/<span class="tot-over">0</span></p>
+               <p>RUN RATE : <span id="runr-user">0</span></p>
+               <p>REQ RATE : <span id="reqr-user">0</span></p>
+             </div>
+             <div class="indicator_scoreboard user_name">USER</div>
+           </div>
+           <div class="input-display">
+             <div class="mid-content">
+               <p class="mid-text">User</p>
+               <p class="mid-text" id="user-does">Batting</p>
+               <div class="choice disable-pointer">
+                 <img id="user-disp" class="disp" src="" alt="">
+               </div>
+             </div>
+             <div class="versus">
+               <p id="vs">VS</p>
+             </div>
+             <div class="mid-content">
+               <p class="mid-text">Computer</p>
+               <p class="mid-text" id="comp-does">Bowling</p>
+               <div class="choice disable-pointer">
+                 <img id="comp-disp" class="disp" src="" alt="">
+               </div>
+             </div>
+           </div>
+
+           <div class="top_scoreboard">
+             <div class="indicator_scoreboard">
+               <span id="comp-job">2nd</span><span> Innings</span>
+             </div>
+             <div class="score-details-comp">
+               <p>RUNS : <span class="runs-comp">0</span>/<span class="comp-wickets">0</span> </p>
+               <p>OVERS : <span class="comp-over-comp">0</span>/<span class="tot-over">0</span></p>
+               <p>RUN RATE : <span id="runr-comp">0</span></p>
+               <p>REQ RATE : <span id="reqr-comp">0</span></p>
+             </div>
+             <div class="indicator_scoreboard">COMPUTER</div>
+           </div>
+         </div>   <!-- end of top_container_page_3 -->
+         <div class="result">
+           <p id="msg">Start Game</p>
+         </div>  <!-- end of 2nd container of page_3 -->
+      <div class="bottom_container_page_3">
+        <div class="user_strike">
+              <p id="place_1_user">
+                <span><i class="fas fa-play invis arr" id="arrow-1-user"></i></span>
+                <span id="up_name_1">user-1</span>
+                <span id="up_score_1">0</span>
+                <span id="up_ball_1">0</span>
+              </p>
+              <p id="place_2_user">
+                <span><i class="fas fa-play invis arr" id="arrow-2-user"></i></span>
+                <span id="up_name_2">user-2</span>
+                <span id="up_score_2">0</span>
+                <span id="up_ball_2">0</span>
+              </p>
+        </div>
+        <div class="all_choices">
+          <div class="choice" id="zero">
+            <img class="disp" src="zero_t.png">
+          </div>
+          <div class="choice" id="one">
+            <img class="disp" src="one_t.png">
+          </div>
+          <div class="choice" id="two">
+            <img class="disp" src="two_t.png">
+          </div>
+          <div class="choice" id="three">
+            <img class="disp" src="three_t.png">
+          </div>
+          <div class="choice" id="four">
+            <img class="disp" src="four_t.png">
+          </div>
+          <div class="choice" id="six">
+            <img class="disp" src="six_t.png">
+          </div>
+        </div>
+        <div class="comp_strike">
+          <p id="place_1_comp">
+            <span><i class="fas fa-play invis arr" id="arrow-1-comp"></i></span>
+            <span id="cp_name_1">comp-1</span>
+            <span id="cp_score_1">0</span>
+            <span id="cp_ball_1">0</span>
+          </p>
+          <p id="place_2_comp">
+            <span><i class="fas fa-play invis arr" id="arrow-2-comp"></i></span>
+            <span id="cp_name_2">comp-2</span>
+            <span id="cp_score_2">0</span>
+            <span id="cp_ball_2">0</span>
+          </p>
+        </div>
+      </div>
+      <div class="score-card-button">
+        <button id="view" type="button">View Scorecard</button>
+      </div>
+    </div>       <!-- End of Hand cricket div  -->
+
+      </div>
+    </div>    <!-- end of Details_and_addplayer_and_handcricket -->
+    <div class="page_4_score_card">
+      <div class="scorecard-place">
+          <i class="fas fa-times fa-lg" id="cancel-scoreboard"></i>
+        <div class="top-stat">
+          <div class="top-stat-div">
+            <p style="color:#f55c47;font-size:30px">Computer</p>
+            <p>
+              <span class="runs-comp">0</span>/<span class="comp-wickets">0</span>
+            </p>
+            <p>
+              (<span class="comp-over-comp">0</span>)
+            </p>
+          </div>
+          <div class="top-stat-div">
+            <p style="color:#f55c47;font-size:30px" class="user-name-show user_name">User</p>
+            <p>
+              <span class="runs-user">0</span>/<span class="user-wickets">0</span>
+            </p>
+            <p>
+              (<span class="comp-over-user">0</span>)
+            </p>
+          </div>
+        </div>
+        <div class="score-stat">
+           <div class="computer-players-score">
+               <table cellspacing=30px cellpadding=3px class="comp_score_card">
+                 <tr>
+                   <th>Batting</th>
+                   <th>Runs</th>
+                   <th>Balls</th>
+                 </tr>
+               </table>
+           </div>
+           <div class="user-players-score">
+             <table cellspacing=30px cellpadding=3px class="user_score_card">
+               <tr>
+                 <th>Batting</th>
+                 <th>Runs</th>
+                 <th>Balls</th>
+               </tr>
+             </table>
+           </div>
+        </div>
+      </div>       <!-- end of score card place -->
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="hand_cricket.js">
+
+  </script>
+</body>
+
+</html>
