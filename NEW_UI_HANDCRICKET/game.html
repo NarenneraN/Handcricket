@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js" integrity="sha256-bC3LCZCwKeehY6T4fFi9VfOU0gztUa+S4cnkIhVPZ5E=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/afc6005920.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="player_select.css">
+    <link rel="stylesheet" href="canvas_chart.css">
+  </head>
+  <body onload="load_players()">
+   <div class="game_container">
+        <div class="all_choices">
+          <div class="choice" id="zero" onclick="activate(0)">
+            <img class="disp" src="zero.png">
+          </div>
+          <div class="choice" id="one" onclick="activate(1)">
+            <img class="disp" src="one.png">
+          </div>
+          <div class="choice" id="two" onclick="activate(2)">
+            <img class="disp" src="two.png">
+          </div>
+          <div class="choice" id="three" onclick="activate(3)">
+            <img class="disp" src="three.png">
+          </div>
+          <div class="choice" id="four" onclick="activate(4)">
+            <img class="disp" src="four.png">
+          </div>
+          <div class="choice" id="six" onclick="activate(6)">
+            <img class="disp" src="six.png">
+          </div>
+        </div>
+        <div class="score-card-button">
+          <button id="view" type="button">View Scorecard</button>
+        </div>
+        <div class="horiz">
+          <div class="disp_show">
+              <img src="one.png" alt="">
+          </div>
+          <svg>
+                <line x1="6%" y1="50%" x2="94%" y2="50%" style="stroke:#f3ca20;stroke-width:4;border-radius:10px;" />
+          </svg>
+           <div class="disp_show">
+               <img src="one.png" alt="">
+           </div>
+        </div>
+        <div class="message">
+            <span>India Need 74 runs in 32 balls</span>
+        </div>
+        <div class="tv_scoreboard">
+          <div class="bat_team">
+             <p>AUS</p>
+          </div>
+          <div class="bat_cont">
+
+               <div class="player_1">
+                   <div class="strike_indicator">
+
+                   </div>
+                   <div class="player_1_name">
+                      <span><i class="fas fa-play" aria-hidden="true"></i></span>
+                       <span class="p1_live_name bat_p1_name">Narendhiran</span>
+                       <span class="batsman_run_cont">
+                         <span class="p1_live_score">50</span>
+                         <span>(</span>
+                         <span class="p1_live_balls">30</span>
+                         <span>)</span>
+                       </span>
+                   </div>
+               </div>
+               <div class="player_2">
+                   <div class="strike_indicator">
+
+                   </div>
+                   <div class="player_2_name">
+                     <span><i class="fas fa-play" aria-hidden="true"></i></span>
+                       <span class="p2_live_name bat_p2_name" >Nfsf</span>
+                       <span class="batsman_run_cont">
+                         <span class="p2_live_score">50</span>
+                         <span>(</span>
+                         <span class="p2_live_balls">30</span>
+                         <span>)</span>
+                       </span>
+                   </div>
+               </div>
+          </div>
+          <div class="scoreboard_cont">
+
+              <div class="top_score">
+                <div class="top_score_runs">
+                  <span class="batting_team_live_score">0</span>
+                  <span>-</span>
+                  <span class="batting_team_live_wickets">0</span>
+                </div>
+                <div class="top_score_overs">
+                  <span class="batting_team_live_overs">0</span>
+                </div>
+
+
+              </div>
+              <div class="bottom_score">
+                  <span>Target : 232</span>
+              </div>
+          </div>
+          <div class="bowl_cont">
+
+               <div class="bowler_name">
+                  <span class="bowler_name">Narendhiran</span>
+                  <span class="run-ratio">
+                    <span class="live_bowler_wickets">4</span>
+                    <span>-</span>
+                    <span class="live_bowler_runs">21</span>
+                  </span>
+
+
+                  <span class="bowler_over">9.2</span>
+               </div>
+               <div class="over_timeline">
+                  <span class="ball_timeline"></span>
+                  <span class="ball_timeline"></span>
+                  <span class="ball_timeline"></span>
+                  <span class="ball_timeline"></span>
+                  <span class="ball_timeline"></span>
+                  <span class="ball_timeline"></span>
+               </div>
+          </div>
+          <div class="bowl_team">
+             <p>IND</p>
+          </div>
+        </div>
+
+
+   </div>
+   <div class="player_select_section">
+     <div class="select_player_to_play">
+       <div class="msg_player_to_play">
+          Select Two Players To Open The Innings
+       </div>
+       <div class="players_list_to_select">
+
+       </div>
+       <div class="cont_btn">
+         <button type="button" name="button" id="cont_player_select" onclick="proceed_selection()" disabled>Continue</button>
+       </div>
+     </div>
+   </div>
+   <div class="wicket_gone_pop_up">
+     <i class="fas fa-times-circle wicket_wrong" onclick="close_wicket()"></i>
+     <img src="bowled.png" alt="" class="bowled">
+     <img src="pbuj.gif" alt="" class="bowled_gif">
+     <div class="wicket_gone_msg_div">
+       <div class="wicket_gone_msg">
+           WICKET GONE
+       </div>
+       <div class="wicket_gone_details">
+         <div class="bat_wicket_details">
+           <span class="wicket_msg_batsmen">Pope</span>
+           <span class="wicket_msg_runs">20</span>
+           <span>(</span>
+           <span class="wicket_msg_balls">40</span>
+           <span>)</span>
+         </div>
+         <div class="bowl_wicket_details">
+           <span class="wicket_msg_bowler">b James Anderson</span>
+         </div>
+       </div>
+
+     </div>
+   </div>
+   <div class="end_of_over_pop">
+      <div class="end_of_over">
+        <div class="">
+     <canvas id="user_run_chart" ></canvas>
+        </div>
+        <div class="summary_over">
+           <div class="summary_over_top">
+               <div class="summary_top_header">
+                   <div class="summary_end_of_over">
+                        <span>End Of Over </span>
+                        <span>22</span>
+                   </div>
+                   <div class="summary_batting_score">
+                         <span>ENG </span>
+                         <span>54</span>
+                         <span> / </span>
+                         <span>0</span>
+                   </div>
+               </div>
+               <div class="summary_top_bottom">
+                  <!-- <div class="summary_tot_runs">
+
+                  </div> -->
+                  <div class="over_timeline">
+                    <span class="ball_timeline"></span>
+                    <span class="ball_timeline"></span>
+                    <span class="ball_timeline"></span>
+                    <span class="ball_timeline"></span>
+                    <span class="ball_timeline"></span>
+                    <span class="ball_timeline"></span>
+                  </div>
+                  <div class="summary_crr">
+
+                  </div>
+               </div>
+           </div>
+           <div class="summary_over_down">
+               <div class="summary_down_bat">
+                 <div class="bat_cont">
+
+                      <div class="player_1">
+                          <div class="strike_indicator">
+
+                          </div>
+                          <div class="player_1_name">
+                             <span><i class="fas fa-play" aria-hidden="true"></i></span>
+                              <span class="p1_live_name bat_p1_name">Narendhiran</span>
+                              <span class="batsman_run_cont">
+                                <span class="p1_live_score">50</span>
+                                <span>(</span>
+                                <span class="p1_live_balls">30</span>
+                                <span>)</span>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="player_2">
+                          <div class="strike_indicator">
+
+                          </div>
+                          <div class="player_2_name">
+                            <span><i class="fas fa-play" aria-hidden="true"></i></span>
+                              <span class="p2_live_name bat_p2_name" >Nfsf</span>
+                              <span class="batsman_run_cont">
+                                <span class="p2_live_score">50</span>
+                                <span>(</span>
+                                <span class="p2_live_balls">30</span>
+                                <span>)</span>
+                              </span>
+                          </div>
+                      </div>
+                 </div>
+               </div>
+               <div class="summary_down_bowl">
+
+               </div>
+           </div>
+        </div>
+      </div>
+   </div>
+   <script src="game.js">
+
+   </script>
+   <script src="player_select.js">
+
+   </script>
+   <script src="canvas_chart.js">
+
+   </script>
+  </body>
+</html>
